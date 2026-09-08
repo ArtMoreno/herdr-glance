@@ -67,6 +67,7 @@ fn protocol_cache_and_prompt_latency() {
             .env("HERDR_WORKSPACE_ID", "w-demo")
             .env("HERDR_SESSION", "fixture")
             .env("HERDR_GLANCE_BIN", &fake)
+            .env("HERDR_BIN_PATH", "missing-herdr-override-must-win")
             .env("HERDR_GLANCE_CACHE_DIR", dir.join("cache"))
             .env("XDG_CONFIG_HOME", &dir)
             .env("APPDATA", &dir);
@@ -82,6 +83,14 @@ fn protocol_cache_and_prompt_latency() {
         .unwrap()
         .success());
     assert!(cli().arg("--refresh").status().unwrap().success());
+    // Plugin launches supply Herdr's executable even when it is not on PATH.
+    assert!(cli()
+        .env_remove("HERDR_GLANCE_BIN")
+        .env("HERDR_BIN_PATH", &fake)
+        .arg("--refresh")
+        .status()
+        .unwrap()
+        .success());
     let out = cli().args(["line", "--plain"]).output().unwrap();
     assert!(out.status.success());
     assert_eq!(

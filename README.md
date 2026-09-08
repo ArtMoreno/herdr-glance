@@ -8,7 +8,27 @@ These are real terminal screenshots of three agents reviewing this project. Agen
 
 ## Install
 
-Requires Rust 1.88 or newer, a working Herdr installation, and a real Herdr pane. The locked native dependencies declare Rust 1.88; local verification used Rust 1.97.1. Install from source:
+Requires Rust 1.88 or newer, Git, Herdr 0.8.2 or newer, and a real Herdr pane. Install through Herdr (builds from source with Cargo):
+
+```sh
+herdr plugin install ArtMoreno/herdr-glance
+```
+
+Open **Glance** from Herdr's plugin pane menu, or use the command for your platform:
+
+```sh
+# macOS / Linux
+herdr plugin pane open --plugin herdr-glance --entrypoint dashboard
+```
+
+```powershell
+# Windows
+herdr plugin pane open --plugin herdr-glance --entrypoint dashboard-windows
+```
+
+The plugin opens a dedicated tab in the current workspace. Installation registers the plugin without starting Glance or changing your shell configuration. Remove it with `herdr plugin uninstall herdr-glance`.
+
+For a `glance` command on PATH, install separately from source. The locked native dependencies declare Rust 1.88; local verification used Rust 1.97.1:
 
 ```sh
 git clone https://github.com/ArtMoreno/herdr-glance.git
@@ -46,7 +66,7 @@ Open your desired side/full pane using Herdr's normal UI, then run `glance` ther
 
 `HERDR_ENV=1` and a nonempty `HERDR_WORKSPACE_ID` are required. Don't set these manually to impersonate a Herdr pane. `HERDR_SESSION` defaults to `default`; every subprocess receives an explicit `--session`. By default only agents in the current workspace appear. `--all-workspaces` includes every agent in that session, and also works with `line` and `--refresh`. A `done` agent remains visible while Herdr still lists it; exited agents disappear.
 
-The `herdr` executable must be on PATH. If Windows exposes only a `.cmd` wrapper, set the real executable path in your Herdr shell, for example:
+Glance uses `HERDR_GLANCE_BIN` when explicitly set, then Herdr's injected `HERDR_BIN_PATH`, then `herdr` (`herdr.exe` on Windows) on PATH. To override the executable in your Herdr shell:
 
 ```powershell
 $env:HERDR_GLANCE_BIN = 'C:\path\to\herdr.exe'

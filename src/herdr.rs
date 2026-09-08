@@ -62,6 +62,7 @@ impl Herdr {
             session,
             workspace,
             binary: env::var("HERDR_GLANCE_BIN")
+                .or_else(|_| env::var("HERDR_BIN_PATH"))
                 .unwrap_or_else(|_| if cfg!(windows) { "herdr.exe" } else { "herdr" }.into()),
         })
     }

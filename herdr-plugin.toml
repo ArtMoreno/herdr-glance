@@ -1,0 +1,23 @@
+id = "herdr-glance"
+name = "Glance"
+version = "0.1.0"
+min_herdr_version = "0.8.2"
+description = "Live agent dashboard with attention flags, activity graphs, and five themes. By ArtMoreno."
+platforms = ["linux", "macos", "windows"]
+
+[[build]]
+command = ["cargo", "build", "--release", "--locked", "--target-dir", "target"]
+
+[[panes]]
+id = "dashboard"
+title = "Glance"
+placement = "tab"
+platforms = ["linux", "macos"]
+command = ["target/release/glance"]
+
+[[panes]]
+id = "dashboard-windows"
+title = "Glance"
+placement = "tab"
+platforms = ["windows"]
+command = ["powershell.exe", "-NoLogo", "-NoProfile", "-Command", "& (Join-Path $env:HERDR_PLUGIN_ROOT 'target/release/glance.exe'); exit $LASTEXITCODE"]
