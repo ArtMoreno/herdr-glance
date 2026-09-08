@@ -1,0 +1,14 @@
+{
+  "id": "fixture-list",
+  "result": {
+    "type": "agent_list",
+    "agents": [
+      {"pane_id":"w-demo:p1","terminal_id":"term-codex","workspace_id":"w-demo","tab_id":"t-demo","focused":false,"revision":12,"name":"parser / transport","agent":"codex","agent_status":"working","state_change_seq":4},
+      {"pane_id":"w-demo:p2","terminal_id":"term-claude","workspace_id":"w-demo","tab_id":"t-demo","focused":false,"revision":9,"name":"design / review","agent":"claude","agent_status":"blocked","state_change_seq":3},
+      {"pane_id":"w-demo:p3","terminal_id":"term-opencode","workspace_id":"w-demo","tab_id":"t-demo","focused":false,"revision":5,"name":"docs / examples","agent":"opencode","agent_status":"done","state_change_seq":2},
+      {"pane_id":"w-demo:p4","terminal_id":"term-idle","workspace_id":"w-demo","tab_id":"t-demo","focused":false,"revision":3,"name":"tests / coverage","agent":"codex","agent_status":"idle","state_change_seq":1},
+      {"pane_id":"w-demo:p5","terminal_id":"term-unknown","workspace_id":"w-demo","tab_id":"t-demo","focused":false,"revision":1,"name":"research / context","agent":"claude","agent_status":"unknown","state_change_seq":0},
+      {"pane_id":"other:p1","terminal_id":"other-term","workspace_id":"other","tab_id":"other","focused":false,"revision":1,"name":"outside workspace","agent":"codex","agent_status":"working"}
+    ]
+  }
+}

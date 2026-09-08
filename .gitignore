@@ -1,0 +1,4 @@
+/target/
+*.tmp
+/HANDOFF.md
+/GUI-HANDOFF.md

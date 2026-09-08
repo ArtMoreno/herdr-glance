@@ -1,0 +1,7 @@
+{
+  "w-demo:p1":{"result":{"type":"pane_read","read":{"pane_id":"w-demo:p1","workspace_id":"w-demo","text":"Checking the response schema…\nTransport checks passed.\nAdding timeout coverage."}}},
+  "w-demo:p2":{"result":{"type":"pane_read","read":{"pane_id":"w-demo:p2","workspace_id":"w-demo","text":"Five palettes are ready.\nWaiting for your decision."}}},
+  "w-demo:p3":{"result":{"type":"pane_read","read":{"pane_id":"w-demo:p3","workspace_id":"w-demo","text":"README examples checked.\nDocumentation is ready for review."}}},
+  "w-demo:p4":{"result":{"type":"pane_read","read":{"pane_id":"w-demo:p4","workspace_id":"w-demo","text":"All snapshot checks passed.\nReady for the next task."}}},
+  "w-demo:p5":{"result":{"type":"pane_read","read":{"pane_id":"w-demo:p5","workspace_id":"w-demo","text":"Connected to the workspace.\nNo native status reported yet."}}}
+}

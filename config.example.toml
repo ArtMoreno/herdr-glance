@@ -1,0 +1,22 @@
+theme = "catppuccin-mocha"
+emoji = true
+icons = "emoji" # nerd (requires Nerd Font), emoji (portable), ascii
+spinner = "dots" # dots, line, pulse
+
+[colors]
+# Optional #RRGGBB overrides, applied on top of every selected theme:
+# background = "#1e1e2e"
+# surface = "#181825"
+# foreground = "#cdd6f4"
+# muted = "#7f849c"
+# accent = "#cba6f7"
+# working = "#89b4fa"
+# idle = "#f9e2af"
+# blocked = "#f38ba8"
+# done = "#a6e3a1"
+# unknown = "#7f849c"
+
+[kind_icons]
+# claude = "󰚩"
+# codex = "󰘦"
+# opencode = ""

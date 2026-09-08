@@ -1,0 +1,122 @@
+[
+  {
+    "file": "catppuccin-mocha.png",
+    "captured_at": "2026-09-08T07:10:21.4588706Z",
+    "theme": "catppuccin-mocha",
+    "width": 1638,
+    "height": 910,
+    "agents": [
+      {
+        "name": "install-review",
+        "agent": "claude",
+        "agent_status": "working"
+      },
+      {
+        "name": "dashboard-safety",
+        "agent": "claude",
+        "agent_status": "working"
+      },
+      {
+        "name": "cache-audit",
+        "agent": "claude",
+        "agent_status": "working"
+      }
+    ]
+  },
+  {
+    "file": "dracula.png",
+    "captured_at": "2026-09-08T07:10:22.6415505Z",
+    "theme": "dracula",
+    "width": 1638,
+    "height": 910,
+    "agents": [
+      {
+        "name": "install-review",
+        "agent": "claude",
+        "agent_status": "working"
+      },
+      {
+        "name": "dashboard-safety",
+        "agent": "claude",
+        "agent_status": "working"
+      },
+      {
+        "name": "cache-audit",
+        "agent": "claude",
+        "agent_status": "working"
+      }
+    ]
+  },
+  {
+    "file": "tokyo-night.png",
+    "captured_at": "2026-09-08T07:10:23.8324166Z",
+    "theme": "tokyo-night",
+    "width": 1638,
+    "height": 910,
+    "agents": [
+      {
+        "name": "install-review",
+        "agent": "claude",
+        "agent_status": "working"
+      },
+      {
+        "name": "dashboard-safety",
+        "agent": "claude",
+        "agent_status": "working"
+      },
+      {
+        "name": "cache-audit",
+        "agent": "claude",
+        "agent_status": "working"
+      }
+    ]
+  },
+  {
+    "file": "nord.png",
+    "captured_at": "2026-09-08T07:10:25.0689504Z",
+    "theme": "nord",
+    "width": 1638,
+    "height": 910,
+    "agents": [
+      {
+        "name": "install-review",
+        "agent": "claude",
+        "agent_status": "working"
+      },
+      {
+        "name": "dashboard-safety",
+        "agent": "claude",
+        "agent_status": "working"
+      },
+      {
+        "name": "cache-audit",
+        "agent": "claude",
+        "agent_status": "working"
+      }
+    ]
+  },
+  {
+    "file": "gruvbox.png",
+    "captured_at": "2026-09-08T07:10:26.3311200Z",
+    "theme": "gruvbox",
+    "width": 1638,
+    "height": 910,
+    "agents": [
+      {
+        "name": "install-review",
+        "agent": "claude",
+        "agent_status": "working"
+      },
+      {
+        "name": "dashboard-safety",
+        "agent": "claude",
+        "agent_status": "working"
+      },
+      {
+        "name": "cache-audit",
+        "agent": "claude",
+        "agent_status": "working"
+      }
+    ]
+  }
+]

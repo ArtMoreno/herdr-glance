@@ -1,0 +1,31 @@
+{
+  "at": "2026-09-08T06:43:04.491Z",
+  "platform": "win32",
+  "mode": "release; live Herdr; includes process startup and captured-pipe EOF",
+  "refresh_ms": 61.81,
+  "warm": {
+    "n": 30,
+    "median_ms": 12.79,
+    "max_ms": 23.57
+  },
+  "expired": {
+    "n": 10,
+    "median_ms": 21.5,
+    "max_ms": 30.56
+  },
+  "checks": [
+    "plain",
+    "ANSI",
+    "word badges",
+    "workspace/session cache separation",
+    "expired returns unknown",
+    "detached refresh retains session scope"
+  ],
+  "counts": [
+    3,
+    2,
+    0,
+    0,
+    0
+  ]
+}
