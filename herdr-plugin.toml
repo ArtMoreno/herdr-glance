@@ -20,4 +20,4 @@ id = "dashboard-windows"
 title = "Glance"
 placement = "tab"
 platforms = ["windows"]
-command = ["powershell.exe", "-NoLogo", "-NoProfile", "-Command", "& (Join-Path $env:HERDR_PLUGIN_ROOT 'target/release/glance.exe'); exit $LASTEXITCODE"]
+command = ["powershell.exe", "-NoLogo", "-NoProfile", "-Command", "& ([IO.Path]::Combine($env:HERDR_PLUGIN_ROOT, 'target/release/glance.exe')); exit $LASTEXITCODE"]

@@ -76,6 +76,27 @@ fn protocol_cache_and_prompt_latency() {
     let denied = cli().env_remove("HERDR_ENV").arg("line").output().unwrap();
     assert!(!denied.status.success());
     assert!(String::from_utf8_lossy(&denied.stderr).contains("HERDR_ENV=1"));
+    #[cfg(windows)]
+    {
+        // Herdr supplies a verbatim Windows root; PowerShell Join-Path rejects it.
+        let root = dir.join("plugin path & spaces");
+        fs::create_dir_all(root.join("target/release")).unwrap();
+        fs::copy(
+            env!("CARGO_BIN_EXE_glance"),
+            root.join("target/release/glance.exe"),
+        )
+        .unwrap();
+        let manifest: toml::Value = toml::from_str(include_str!("../herdr-plugin.toml")).unwrap();
+        let argv = manifest["panes"][1]["command"].as_array().unwrap();
+        let out = Command::new(argv[0].as_str().unwrap())
+            .args(argv[1..].iter().map(|v| v.as_str().unwrap()))
+            .env("HERDR_PLUGIN_ROOT", root.canonicalize().unwrap())
+            .env_remove("HERDR_ENV")
+            .output()
+            .unwrap();
+        assert_eq!(out.status.code(), Some(1));
+        assert!(String::from_utf8_lossy(&out.stderr).contains("HERDR_ENV=1"));
+    }
     assert!(!cli()
         .env_remove("HERDR_WORKSPACE_ID")
         .arg("line")
