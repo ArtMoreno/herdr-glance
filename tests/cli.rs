@@ -132,7 +132,9 @@ fn protocol_cache_and_prompt_latency() {
         let fresh = fs::read(&cache)
             .ok()
             .and_then(|bytes| serde_json::from_slice::<Value>(&bytes).ok());
-        if fresh.is_some_and(|v| v["at"].as_u64().unwrap() > value["at"].as_u64().unwrap()) {
+        if fresh.is_some_and(|v| v["at"].as_u64().unwrap() > value["at"].as_u64().unwrap())
+            && !cache.with_extension("lock").exists()
+        {
             break;
         }
         assert!(
@@ -141,18 +143,27 @@ fn protocol_cache_and_prompt_latency() {
         );
         std::thread::sleep(Duration::from_millis(10));
     }
+    // Keep the asynchronous scope-rejection probe separate from later expiry probes.
+    let scope_dir = dir.join("scope-cache");
+    fs::create_dir_all(&scope_dir).unwrap();
+    let scope_cache = scope_dir.join(cache.file_name().unwrap());
     // A payload copied into the wrong scope's path must not supply its counts.
     value["workspace"] = "wrong-workspace".into();
     value["at"] = herdr::now().into();
-    fs::write(&cache, serde_json::to_vec(&value).unwrap()).unwrap();
-    fs::write(cache.with_extension("lock"), "held").unwrap();
+    fs::write(&scope_cache, serde_json::to_vec(&value).unwrap()).unwrap();
+    fs::write(scope_cache.with_extension("lock"), "held").unwrap();
     let out = cli()
+        .env("HERDR_GLANCE_CACHE_DIR", &scope_dir)
         .args(["line", "--plain", "--no-emoji"])
         .output()
         .unwrap();
     assert_eq!(String::from_utf8_lossy(&out.stdout).trim(), "unknown");
-    assert!(cli().arg("--refresh").status().unwrap().success());
-    fs::remove_file(cache.with_extension("lock")).unwrap();
+    assert!(cli()
+        .env("HERDR_GLANCE_CACHE_DIR", &scope_dir)
+        .arg("--refresh")
+        .status()
+        .unwrap()
+        .success());
     let future_lock = fs::File::create(cache.with_extension("lock")).unwrap();
     future_lock
         .set_modified(std::time::SystemTime::now() + Duration::from_secs(3600))
